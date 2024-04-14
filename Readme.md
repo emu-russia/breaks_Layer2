@@ -1,11 +1,11 @@
 # breaks Layer2
 
-Время идёт, домашние методы реверс-инжиниринга микросхем совершенствуются.
+Time goes by, home reverse-engineering chip methods are improving.
 
-Сейчас мы имеем инструмент (Deroute), который умеет выгружать восстановленную схему сразу в netlist (Verilog). Таким образом нужно наметить на микросхеме одинаковые блоки, оформить их как модули, соединить проводами и на выходе получим сразу готовый HDL.
+Now we have a tool (Deroute), which is able to export the reconstructed circuit directly to the netlist (Verilog). In this way we need to mark identical blocks on the chip, design them as modules, connect them with wires and we will get a ready HDL at once.
 
-Следующий важный этап в изучении микросхем заключается в том, что НЕ нужно понимать как оно работает внутри. Основная задача - получить netlist и убедиться что на сигнальном уровне схема работает как положено.
+The next important step in studying a chip is that you do NOT need to understand how it works internally. The main task is to get a netlist and make sure that the circuit works properly at the signal level.
 
-Данный репозиторий является как-бы отдельным слоем, базирующимся на основном проекте breaks. Берём транзисторные схемы 6502/APU/PPU, определяем базовые элементы и получаем netlist.
+This repository is like a separate layer based on the main breaks project. Take 6502/APU/PPU transistor circuits, define the basic elements and get the netlist.
 
-Работы вдохновлены успехами @nukeykt, который широко использует данные подходы для изучения микросхем.
+The work is inspired by the successes of @nukeykt, who uses these approaches extensively to study microchips.
