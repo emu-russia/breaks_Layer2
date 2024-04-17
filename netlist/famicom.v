@@ -120,8 +120,8 @@ module famicom (  RESET_SW, AUDIO, VIDEO, CLK);
 	famicom_P2 port2 (.SOUND(w43), .nIRQ(w44), .P4017_D4(w45), .P4017_D3(w46), .P4017_D2(w47), .P4017_D1(w48), .P4017_D0(w49), .P4016_D1(w38), .P4016_CUP(w40), .OUT_0(w42), .OUT_1(w53), .OUT_2(w51), .P4017_CUP(w50) );
 	famicom_P4 port4 (.P4016_D0(w39), .OUT_0(w42), .P4016_CUP(w40) );
 	famicom_LS373 u2 (.LE(w57), .nOE(1'b0), .D[0](w15), .D[1](w14), .D[2](w13), .D[3](w12), .D[4](w11), .D[5](w10), .D[6](w9), .D[7](w8), .Q[0](w23), .Q[1](w22), .Q[2](w21), .Q[3](w20), .Q[4](w19), .Q[5](w18), .Q[6](w17), .Q[7](w16) );
-	famicom_P1 g14 (.RnW(w58), .D[7](w59), .D[6](w60), .D[5](w61), .D[4](w31), .D[3](w32), .D[2](w33), .D[1](w34), .D[0](w35), .A[14](w63), .A[13](w62), .A[12](w64), .A[11](w65), .A[10](w66), .A[9](w67), .A[8](w68), .A[7](w69), .A[6](w70), .A[5](w71), .A[4](w72), .A[3](w73), .A[2](w74), .A[1](w75), .A[0](w76), .nIRQ(w44), .M2(w36), .nROMSEL(w88) );
-	famicom_P1 g15 (.SOUND_IN(w86), .nPA13(w37), .nVRAM_CS(w81), .VRAM_A10(w82), .PA[13](w7), .PA[12](w78), .PA[11](w79), .PA[10](w80), .nRD(w83), .nWE(w84), .A[9](w55), .A[8](w56), .A[7](w23), .A[6](w22), .A[5](w21), .A[4](w20), .A[3](w19), .A[2](w18), .A[1](w17), .A[0](w16), .SOUND_OUT(w85), .PD[7](w15), .PD[6](w14), .PD[5](w13), .PD[4](w12), .PD[3](w11), .PD[2](w10), .PD[1](w9), .PD[0](w8) );
+	famicom_P1_1 g14 (.RnW(w58), .D[7](w59), .D[6](w60), .D[5](w61), .D[4](w31), .D[3](w32), .D[2](w33), .D[1](w34), .D[0](w35), .A[14](w63), .A[13](w62), .A[12](w64), .A[11](w65), .A[10](w66), .A[9](w67), .A[8](w68), .A[7](w69), .A[6](w70), .A[5](w71), .A[4](w72), .A[3](w73), .A[2](w74), .A[1](w75), .A[0](w76), .nIRQ(w44), .M2(w36), .nROMSEL(w88) );
+	famicom_P1_2 g15 (.SOUND_IN(w86), .nPA13(w37), .nVRAM_CS(w81), .VRAM_A10(w82), .PA[13](w7), .PA[12](w78), .PA[11](w79), .PA[10](w80), .nRD(w83), .nWE(w84), .A[9](w55), .A[8](w56), .A[7](w23), .A[6](w22), .A[5](w21), .A[4](w20), .A[3](w19), .A[2](w18), .A[1](w17), .A[0](w16), .SOUND_OUT(w85), .PD[7](w15), .PD[6](w14), .PD[5](w13), .PD[4](w12), .PD[3](w11), .PD[2](w10), .PD[1](w9), .PD[0](w8) );
 	famicom_LS139 u3 (.A0_1(w62), .A1_1(w63), .A1_2(w92), .A0_2(w36), .nY3_2(w88), .nY1_2(w91), .nY0_1(w90), .nY1_1(w89), .nE_1(w91), .nE_2(1'b0) );
 endmodule // famicom
 
@@ -352,7 +352,7 @@ module famicom_LS373 (  LE, nOE, D[0], D[1], D[2], D[3], D[4], D[5], D[6], D[7],
 
 endmodule // famicom_LS373
 
-module famicom_P1 (  RnW, D[7], D[6], D[5], D[4], D[3], D[2], D[1], D[0], A[14], A[13], A[12], A[11], A[10], A[9], A[8], A[7], A[6], A[5], A[4], A[3], A[2], A[1], A[0], nIRQ, M2, nROMSEL);
+module famicom_P1_1 (  RnW, D[7], D[6], D[5], D[4], D[3], D[2], D[1], D[0], A[14], A[13], A[12], A[11], A[10], A[9], A[8], A[7], A[6], A[5], A[4], A[3], A[2], A[1], A[0], nIRQ, M2, nROMSEL);
 
 	input wire RnW;
 	inout wire D[7];
@@ -382,7 +382,41 @@ module famicom_P1 (  RnW, D[7], D[6], D[5], D[4], D[3], D[2], D[1], D[0], A[14],
 	input wire M2;
 	input wire nROMSEL;
 
-endmodule // famicom_P1
+endmodule // famicom_P1_1
+
+module famicom_P1_2 (  SOUND_IN, nPA13, nVRAM_CS, VRAM_A10, PA[13], PA[12], PA[11], PA[10], nRD, nWE, A[9], A[8], A[7], A[6], A[5], A[4], A[3], A[2], A[1], A[0], SOUND_OUT, PD[7], PD[6], PD[5], PD[4], PD[3], PD[2], PD[1], PD[0]);
+
+	input wire SOUND_IN;
+	input wire nPA13;
+	output wire nVRAM_CS;
+	output wire VRAM_A10;
+	input wire PA[13];
+	input wire PA[12];
+	input wire PA[11];
+	input wire PA[10];
+	input wire nRD;
+	input wire nWE;
+	input wire A[9];
+	input wire A[8];
+	input wire A[7];
+	input wire A[6];
+	input wire A[5];
+	input wire A[4];
+	input wire A[3];
+	input wire A[2];
+	input wire A[1];
+	input wire A[0];
+	output wire SOUND_OUT;
+	inout wire PD[7];
+	inout wire PD[6];
+	inout wire PD[5];
+	inout wire PD[4];
+	inout wire PD[3];
+	inout wire PD[2];
+	inout wire PD[1];
+	inout wire PD[0];
+
+endmodule // famicom_P1_2
 
 module famicom_LS139 (  A0_1, A1_1, A1_2, A0_2, nY3_2, nY2_2, nY1_2, nY0_2, nY0_1, nY1_1, nY2_1, nY3_1, nE_1, nE_2);
 
