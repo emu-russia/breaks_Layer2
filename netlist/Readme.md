@@ -1,7 +1,5 @@
 # netlist
 
-Восстановление netlist, используя утилиту Deroute.
+Restore the netlist using the Deroute utility.
 
-Исходные изображения в папке `refimages`.
-
-Lambda: 6
+The source images are in the `refimages` folder.

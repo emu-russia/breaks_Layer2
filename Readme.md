@@ -2,7 +2,7 @@
 
 Time goes by, home reverse-engineering chip methods are improving.
 
-Now we have a tool (Deroute), which is able to export the reconstructed circuit directly to the netlist (Verilog). In this way we need to mark identical blocks on the chip, design them as modules, connect them with wires and we will get a ready HDL at once.
+Now we have a tool ([Deroute](https://github.com/emu-russia/Deroute)), which is able to export the reconstructed circuit directly to the netlist (Verilog). In this way we need to mark identical blocks on the chip, design them as modules, connect them with wires and we will get a ready HDL at once.
 
 The next important step in studying a chip is that you do NOT need to understand how it works internally. The main task is to get a netlist and make sure that the circuit works properly at the signal level.
 
